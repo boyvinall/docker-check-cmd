@@ -10,6 +10,11 @@ import (
 
 func main() {
 	// args from https://github.com/gliderlabs/registrator/blob/3181e58ae642b9963711ebf1fe7cb431a3f684b3/consul/consul.go#L74
+	if len(os.Args) < 4 {
+		fmt.Fprint(os.Stderr, "Please specify <containerid> <port> <cmd>\n")
+		os.Exit(3)
+	}
+
 	containerid := os.Args[1]
 	exposedport := os.Args[2]
 	cmd := os.Args[3]
